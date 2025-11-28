@@ -66,4 +66,18 @@ In a capital-constrained environment, the engine must decide which trade to take
 Clone the repository:
 ```bash
 git clone https://github.com/yourusername/sports-arb-engine.git
+
 cd sports-arb-engine
+```
+
+Set up the environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+Run the simulation:
+```bash
+python main.py
+```
