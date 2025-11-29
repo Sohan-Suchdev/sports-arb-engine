@@ -54,14 +54,22 @@ In a capital-constrained environment, the engine must decide which trade to take
 - **Infinite Liquidity:** The simulation assumes we can bet any amount without moving the odds.
 - **Idealized Data:** While the Standard Arb data uses stochastic volatility (sin waves + Gaussian noise), the Index Arb data currently uses injected "known positives" for unit testing.
 
-## 🛠️ Technical Stack
+## Live Testing & Verification
+The engine runs in two modes: **Simulation** (for demonstration) and **Live** (for validation).
+
+### The "False Positive" Discovery (3-Way vs 2-Way Markets)
+During initial live testing on English Premier League (EPL) data, the engine detected abnormally high margins (>30%). 
+* **Root Cause:** The arbitrage formula $\frac{1}{Home} + \frac{1}{Away}$ is valid only for 2-way markets (e.g., Tennis, NFL). In Soccer, the missing **Draw** outcome caused the sum of probabilities to artificially drop below 1.0.
+* **Resolution:** The engine was re-configured to target 2-way markets (NFL/NBA) where the "No-Draw" condition holds true.
+
+## Technical Stack
 
 - **Python 3.10+**
 - **NumPy:** For generating stochastic market feeds and handling vector operations.
 - **Matplotlib:** For visualizing the "Arbitrage Window" and market efficiency over time.
 - **Object-Oriented Design:** Modular architecture separating ArbitrageEngine (Logic), PortfolioManager (State), and RiskManager (Decision).
 
-## 💻 Installation & Usage
+## Installation & Usage
 
 Clone the repository:
 ```bash
@@ -81,3 +89,4 @@ Run the simulation:
 ```bash
 python main.py
 ```
+
