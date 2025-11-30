@@ -73,7 +73,7 @@ During initial live testing on English Premier League (EPL) data, the engine det
 
 Clone the repository:
 ```bash
-git clone https://github.com/yourusername/sports-arb-engine.git
+git clone https://github.com/Sohan-Suchdev/sports-arb-engine.git
 
 cd sports-arb-engine
 ```
@@ -89,4 +89,5 @@ Run the simulation:
 ```bash
 python main.py
 ```
+
 
